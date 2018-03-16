@@ -96,8 +96,8 @@ class BasicAuthentication(BaseAuthentication):
         if user is None:
             raise exceptions.AuthenticationFailed(_('Invalid username/password.'))
 
-        if not user.is_active:
-            raise exceptions.AuthenticationFailed(_('User inactive or deleted.'))
+        # if not user.is_active:
+        #     raise exceptions.AuthenticationFailed(_('User inactive or deleted.'))
 
         return (user, None)
 
@@ -178,8 +178,8 @@ class TokenAuthentication(BaseAuthentication):
         except self.model.DoesNotExist:
             raise exceptions.AuthenticationFailed(_('Invalid token.'))
 
-        if not token.user.is_active:
-            raise exceptions.AuthenticationFailed(_('User inactive or deleted.'))
+        # if not token.user.is_active:
+        #     raise exceptions.AuthenticationFailed(_('User inactive or deleted.'))
 
         return (token.user, token)
 
